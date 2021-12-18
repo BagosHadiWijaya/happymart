@@ -28,29 +28,29 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('produk.index') }}">
                     <i class="fa fa-cubes"></i> <span>Produk</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('member.index') }}">
                     <i class="fa fa-id-card"></i> <span>Member</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('supplier.index') }}">
                     <i class="fa fa-truck"></i> <span>Supplier</span>
                 </a>
             </li>
             <li class="header">TRANSAKSI</li>
             <li>
-                <a href="#">
-                   <!--  <i class="fa fa-money"></i> <span>Pengeluaran</span> -->
+                <a href="{{ route('pengeluaran.index') }}">
+                    <i class="fa fa-money"></i> <span>Pengeluaran</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                  <!--   <i class="fa fa-download"></i> <span>Pembelian</span> -->
+                <a href="{{ route('pembelian.index') }}">
+                    <i class="fa fa-download"></i> <span>Pembelian</span>
                 </a>
             </li>
             <li>
@@ -72,17 +72,6 @@
             <li>
                 <a href="#">
                     <!-- <i class="fa fa-file-pdf-o"></i> <span>Laporan</span> -->
-                </a>
-            </li>
-            <li class="header">SYSTEM</li>
-            <li>
-                <a href="#">
-                    <!-- <i class="fa fa-users"></i> <span>User</span> -->
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <!-- <i class="fa fa-cogs"></i> <span>Pengaturan</span> -->
                 </a>
             </li>
         </ul>

@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-Daftar Kategori
+Daftar Member
 @endsection
 
 @section('breadcrumb')
 @parent
-<li class="active">Kategori</li>
+<li class="active">Member</li>
 @endsection
 
 @section('content')
@@ -14,13 +14,16 @@ Daftar Kategori
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <button onclick="addForm('{{ route('kategori.store') }}'    )" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>
+                <button onclick="addForm('{{ route('member.store') }}'    )" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>
             </div>
             <div class="box-body table-responsive">
                 <table class="table table-stiped table-bordered">
                     <thead>
                         <th width="5%">No</th>
-                        <th>Kategori</th>
+                        <th>Kode</th>
+                        <th>Nama</th>
+                        <th>Telepon</th>
+                        <th>Alamat</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                     <tbody></tbody>
@@ -30,7 +33,7 @@ Daftar Kategori
     </div>
 </div>
 
-@includeIf('kategori.form')
+@includeIf('member.form')
 @endsection
 
 @push('scripts')
@@ -42,11 +45,14 @@ $(function () {
         processing: true,
         autoWidth: false,
         ajax: {
-            url: '{{ route('kategori.data') }}',
+            url: '{{ route('member.data') }}',
         },
         columns: [
             {data: 'DT_RowIndex', searchable: false, sortable: false},
-            {data: 'nama_kategori'},
+            {data: 'kode_member'},
+            {data: 'nama'},
+            {data: 'telepon'},
+            {data: 'alamat'},
             {data: 'aksi', searchable: false, sortable: false},
         ]
     });
@@ -68,26 +74,28 @@ $(function () {
 
     function addForm(url) {
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Tambah Kategori');
+        $('#modal-form .modal-title').text('Tambah Member');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('post');
-        $('#modal-form [name=nama_kategori]').focus();
+        $('#modal-form [name=nama]').focus();
     }
 
     function editForm(url) {
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Edit Kategori');
+        $('#modal-form .modal-title').text('Edit Member');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('put');
-        $('#modal-form [name=nama_kategori]').focus();
+        $('#modal-form [name=nama]').focus();
 
         $.get(url)
             .done((response) => {
-                $('#modal-form [name=nama_kategori]').val(response.nama_kategori);
+                $('#modal-form [name=nama]').val(response.nama);
+                $('#modal-form [name=telepon]').val(response.telepon);
+                $('#modal-form [name=alamat]').val(response.alamat);
             })
             .fail((errors) => {
                 alert('Tidak dapat menampilkan data');
